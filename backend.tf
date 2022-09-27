@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
-    bucket = "NOME-DO-SEU-BUCKET-S3"
-    key    = "terraform-network-catapimba.tfstate"
+    bucket = "terraform-state-leandro"
+    key    = "terraform-jenkins-catapimba.tfstate"
     region = "us-east-1"
   }
 }
