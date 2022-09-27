@@ -3,7 +3,7 @@ agent any
   stages {
     stage('Clone') {
       steps {
-        git url: 'git@github.com:lmonteirof/catapimba-network.git', branch: 'main'
+        git url: 'https://github.com/lmonteirof/catapimba-jenkins.git', branch: 'main'
       }
     }
 
