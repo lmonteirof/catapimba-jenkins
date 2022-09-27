@@ -1,0 +1,33 @@
+pipeline {
+agent any
+  stages {
+    stage('Clone') {
+      steps {
+        git url: 'git@github.com:lmonteirof/catapimba-network.git', branch: 'main'
+      }
+    }
+
+    stage('TF Init&Plan') {
+      steps {
+        script {
+          sh 'terraform init'
+          sh 'terraform plan -out=myplan.out'
+        }
+      }
+    }
+
+    stage('Approval') {
+      steps {
+        script {
+          def userInput = input(id: 'confirm', message: 'Deseja alterar a Infraestrutura?', description: 'Acao ', name: 'Confirm')
+        }
+      }
+    }
+
+    stage('TF Apply') {
+      steps {
+          sh 'terraform apply myplan.out'
+      }
+    }
+  }
+}
