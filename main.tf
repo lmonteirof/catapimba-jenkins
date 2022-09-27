@@ -50,6 +50,7 @@ module "jenkins_ec2_instance" {
   vpc_security_group_ids = [module.jenkins_sg.security_group_id]
   subnet_id              = "subnet-014bc6dd07f5ccc50"
   iam_instance_profile   = "LabInstanceProfile"
+  user_data              = file("./dependencias.sh")
 
   tags = {
     Terraform = "true"
